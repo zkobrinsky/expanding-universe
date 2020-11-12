@@ -2,79 +2,32 @@ let astroImage;
 let randomcheckX;
 let randomcheckY;
 let mode = 0;
+const magnitude = 5;
+const alpha = 200;
+let backgroundSwitch = false;
+let imageUrls = [];
+
+presentMode();
 
 function preload() {
   astroImage = loadImage("getjpegcodec.jpg");
+  // astroImage = loadImage('https://apod.nasa.gov/apod/image/2011/C2020M3Orion_CharlesBracken1024.jpg')
 }
 
 function setup() {
-  createCanvas(600,400);
+  createCanvas(((astroImage.width / astroImage.height) * windowHeight), windowHeight);
+  frameRate(45);
   background(0);
 }
 
 function draw() {
-
+  if (astroImage.width > 2) {
   astroImage.loadPixels();
-  for (let i = 0; i < 2000; i++) {
- 
-    let randomcheckX = random(astroImage.width);
-    let randomcheckY = random(astroImage.height);
-    let x = int(random(astroImage.width));
-    let y = int(random(astroImage.height));
-    let offset = ((y * astroImage.width) + x) * 4;
-    let r = astroImage.pixels[offset + 0];
-    let g = astroImage.pixels[offset + 1];
-    let b = astroImage.pixels[offset + 2];
-    let a = astroImage.pixels[offset + 3];
-
-
-    // re-do random coords if it finds the same coord twice
-    if (x == randomcheckX) {
-      x = random(astroImage.width)
-    }
-    if (y == randomcheckY) {
-      y = random(astroImage.height)
-    } 
-    
-    if (mode == 0) {
-      r = astroImage.pixels[offset + 0];
-      g = astroImage.pixels[offset + 1];
-      b = astroImage.pixels[offset + 2];
-      a = astroImage.pixels[offset + 3];
-    }
-    
-
-      
-       if (mode == 1) {
-      if (r > b) {
-        r = r * 5;
-        b = 0;
-      } else {
-        if (r < b) {
-          r = b = g = 0;
-        }
-      }
-       }
-    
-        if (mode == 2) {
-      if (b > r) {
-        b = b * 5;
-        r = 0;
-      } else {
-        if (b < r) {
-          r = b = g = 0;
-        }
-      }
-      }
-           
-      
-        
-      fill(r,g,b);
-      noStroke();
-      // circle(map(x, 0, astroImage.width, 0, width), map(y, 0, astroImage.height, 0, height), 1);
-      circle(map(x, 0, astroImage.width, 0, width), map(y, 0, astroImage.height, 0, height), width / 200);
-    }
+  drawPixels()
   }
+  
+}
+
 
 
 function keyTyped() {
@@ -84,20 +37,37 @@ function keyTyped() {
   }
   
   if (key === '1') {
+    backgroundSwitch = true;
     mode = 1;
   }
-    if (key === '2') {
+  if (key === '2') {
+    backgroundSwitch = true;
     mode = 2;
   }
-      if (key === '0') {
+  if (key === '0') {
+    backgroundSwitch = true;
     mode = 0;
   }
 }
 
 function windowResized() {
   if (fullscreen) {
-    resizeCanvas(windowWidth, windowHeight);
+    // resizeCanvas(windowWidth, windowHeight)
+    resizeCanvas(((astroImage.width / astroImage.height) * windowHeight), windowHeight);
   } else {
     resizeCanvas(600, 400)
   }
+}
+
+function presentMode() {
+//   for longer rgb preview:
+  // mode = -1;
+  setInterval(function(){
+    mode++;
+    backgroundSwitch = true;
+    if (mode >2) {
+        mode = 0;
+        getImage();
+        }
+  }, 2000);
 }

@@ -4,6 +4,7 @@ html, body {
 
 body {
   margin: 0;
+  background: black;
   display: flex;
 
   /* This centers our sketch horizontally. */
