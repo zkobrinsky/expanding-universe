@@ -80,7 +80,23 @@ function blackOut() {
     }
     backgroundSwitch = false
   }
-
+function getCollection() {
+  let date = new Date();
+  let dateString = ''
+    for (let i = 0; i < 20; i--) {
+      date.setDate(date.getDate() -i)
+      dateString = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+      
+      fetch(`https://api.nasa.gov/planetary/apod?api_key=VwQg3ZEm6xVl5UzYmZFAQcx3P6IWMBFpi5Bmz8r5&date=${dateString}`)
+        .then(resp => resp.json())
+        .then(obj => {
+            imageObjs.push(obj)
+            console.log(imageObjs)
+        })
+    }
+  
+  
+}
 
 function getImage() {
     fetch('https://api.nasa.gov/planetary/apod?api_key=VwQg3ZEm6xVl5UzYmZFAQcx3P6IWMBFpi5Bmz8r5')

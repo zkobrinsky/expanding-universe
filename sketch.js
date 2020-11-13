@@ -5,9 +5,10 @@ let mode = 0;
 const magnitude = 5;
 const alpha = 200;
 let backgroundSwitch = false;
-let imageUrls = [];
+let imageObjs = [];
 
 presentMode();
+getCollection();
 
 function preload() {
   astroImage = loadImage("getjpegcodec.jpg");
@@ -21,10 +22,10 @@ function setup() {
 }
 
 function draw() {
-  if (astroImage.width > 2) {
+  // if (astroImage.width > 2) {
   astroImage.loadPixels();
   drawPixels()
-  }
+  // }
   
 }
 
@@ -52,7 +53,6 @@ function keyTyped() {
 
 function windowResized() {
   if (fullscreen) {
-    // resizeCanvas(windowWidth, windowHeight)
     resizeCanvas(((astroImage.width / astroImage.height) * windowHeight), windowHeight);
   } else {
     resizeCanvas(600, 400)
@@ -67,7 +67,7 @@ function presentMode() {
     backgroundSwitch = true;
     if (mode >2) {
         mode = 0;
-        getImage();
+        // getImage();
         }
-  }, 2000);
+  }, 20000);
 }
