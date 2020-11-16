@@ -6,13 +6,15 @@ const magnitude = 5;
 const alpha = 200;
 let backgroundSwitch = false;
 let imageObjs = [];
+const collectionRequestLength = 50;
+let hubbleIds = [];
 
 presentMode();
-getCollection();
+// getCollection();
+getHubbleCollection();
 
 function preload() {
   astroImage = loadImage("getjpegcodec.jpg");
-  // astroImage = loadImage('https://apod.nasa.gov/apod/image/2011/C2020M3Orion_CharlesBracken1024.jpg')
 }
 
 function setup() {
@@ -22,16 +24,14 @@ function setup() {
 }
 
 function draw() {
-  // if (astroImage.width > 2) {
-  astroImage.loadPixels();
-  drawPixels()
-  // }
-  
+  if (astroImage.width > 2) {
+    astroImage.loadPixels();
+    drawPixels()
+  }
 }
 
 
-
-function keyTyped() {
+function keyPressed() {
   if (key === ' ') {
     fs = fullscreen()
     fullscreen(!fs);
@@ -47,6 +47,10 @@ function keyTyped() {
   }
   if (key === '0') {
     backgroundSwitch = true;
+    mode = 0;
+  }
+  if (key === 'ArrowRight') {
+    getImageFromHubble();
     mode = 0;
   }
 }
@@ -67,7 +71,7 @@ function presentMode() {
     backgroundSwitch = true;
     if (mode >2) {
         mode = 0;
-        // getImage();
+        getImageFromHubble();
         }
   }, 20000);
 }
