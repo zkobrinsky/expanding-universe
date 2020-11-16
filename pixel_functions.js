@@ -1,7 +1,3 @@
-function hello() {
-    console.log('hello world')
-}
-
 function drawPixels() {
     for (let i = 0; i < 2000; i++) {
         let randomcheckX = int(random(astroImage.width));
