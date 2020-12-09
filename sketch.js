@@ -3,7 +3,7 @@ let randomcheckX;
 let randomcheckY;
 let mode = 0;
 const magnitude = 5;
-const alpha = 200;
+let alpha = 200;
 let backgroundSwitch = false;
 let imageObjs = [];
 const collectionRequestLength = 50;
@@ -11,7 +11,6 @@ let hubbleIds = [];
 let timer;
 
 presentMode();
-getHubbleCollection();
 
 function preload() {
   astroImage = loadImage(`./SDSS_assets/images/img${parseInt(random(0,763))}.jpg`);
@@ -19,7 +18,7 @@ function preload() {
 
 function setup() {
   createCanvas(((astroImage.width / astroImage.height) * windowHeight), windowHeight);
-  frameRate(45);
+  frameRate(60);
   background(0);
 }
 
@@ -66,7 +65,7 @@ function windowResized() {
 
 function presentMode() {
 //   for longer rgb preview:
-  // mode = -1;
+  mode = -1;
   timer = setInterval(function(){
     mode++;
     backgroundSwitch = true;
