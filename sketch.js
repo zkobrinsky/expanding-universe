@@ -17,7 +17,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(((astroImage.width / astroImage.height) * windowHeight), windowHeight);
+  createCanvas(windowWidth, windowHeight);
   frameRate(60);
   background(0);
 }
@@ -57,7 +57,7 @@ function keyPressed() {
 
 function windowResized() {
   if (fullscreen) {
-    resizeCanvas(((astroImage.width / astroImage.height) * windowHeight), windowHeight);
+    resizeCanvas(windowWidth, windowHeight);
   } else {
     resizeCanvas(600, 400)
   }

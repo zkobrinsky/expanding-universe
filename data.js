@@ -17,8 +17,8 @@ function getCollection() {
   
   
   function getImage() {
-    let randomizer = parseInt(random(0,763))
-    astroImage = loadImage(`./SDSS_assets/images/img${randomizer}.jpg`, () => resetTimer())
+    let randomizer = parseInt(random(0,727))
+    astroImage = loadImage(`./SDSS_assets/cropped_fixed_images/img${randomizer}.jpg`, () => resetTimer())
   
   }
   
