@@ -69,9 +69,6 @@ function blackOut() {
     let alpha = 0;
 
       if (backgroundSwitch == true) {
-      //  if (Math.floor(millis()/1000) % 3 == 0) {
-      //   alpha += 100;
-      // }
       background(0, 0, 0,alpha);
     }
     backgroundSwitch = false
@@ -92,19 +89,11 @@ function getCollection() {
   }
 }
 
-// function createJsonFile(jsonData) {
-// var fs = require('fs');
-// fs.writeFile("test.txt", jsonData, function(err) {
-//     if (err) {
-//         console.log(err);
-//     }
-// })
-// }
 
 function getImage() {
-  loadImage(imageObjs[int(random(0, imageObjs.length))].hdurl, img => {
-    astroImage = img;
-  })
+  let randomizer = parseInt(random(0,763))
+  astroImage = loadImage(`./SDSS_assets/images/img${randomizer}.jpg`, () => resetTimer())
+
 }
 
 function getHubbleCollection() {

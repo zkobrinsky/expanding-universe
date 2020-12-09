@@ -8,13 +8,13 @@ let backgroundSwitch = false;
 let imageObjs = [];
 const collectionRequestLength = 50;
 let hubbleIds = [];
+let timer;
 
 presentMode();
-// getCollection();
 getHubbleCollection();
 
 function preload() {
-  astroImage = loadImage("getjpegcodec.jpg");
+  astroImage = loadImage(`./SDSS_assets/images/img${parseInt(random(0,763))}.jpg`);
 }
 
 function setup() {
@@ -50,8 +50,9 @@ function keyPressed() {
     mode = 0;
   }
   if (key === 'ArrowRight') {
-    getImageFromHubble();
-    mode = 0;
+    getImage();
+    resetTimer();
+    // mode = 0;
   }
 }
 
@@ -66,12 +67,18 @@ function windowResized() {
 function presentMode() {
 //   for longer rgb preview:
   // mode = -1;
-  setInterval(function(){
+  timer = setInterval(function(){
     mode++;
     backgroundSwitch = true;
     if (mode >2) {
-        mode = 0;
-        getImageFromHubble();
+        // getImageFromHubble();
+        getImage();
         }
   }, 20000);
+}
+
+function resetTimer() {
+  clearInterval(timer);
+  mode = 0;
+  presentMode();
 }
