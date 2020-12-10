@@ -6,8 +6,12 @@
 
   function getImageFromUrls() {
     // for web editor...
-    astroImage = loadImage(getSdssUrls()[parseInt(random(0, 763))], () => resetTimer())
+    astroImage = loadImage(getSdssUrls()[parseInt(random(0, 765))], (e) => resetTimer(), () => {
+      // if it fails, try again:
+      getImageFromUrls()
+    })
   }
+
 
 
 

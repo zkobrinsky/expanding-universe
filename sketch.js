@@ -9,7 +9,8 @@ let noiseFilter = 0;
 presentMode();
 
 function preload() {
-  getImage();
+  // getImage();
+  getImageFromUrls()
   // for web editor: getImageFromUrls();
 }
 
