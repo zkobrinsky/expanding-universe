@@ -1,12 +1,20 @@
   
   function getImage() {
     let randomizer = parseInt(random(0,727))
-    astroImage = loadImage(`./SDSS_assets/cropped_fixed_images/img${randomizer}.jpg`, () => resetTimer())
+    loadImage(`./SDSS_assets/cropped_fixed_images/img${randomizer}.jpg`, (e) => {
+      astroImage = e;
+      resetTimer()
+    }, 
+    () => {
+      // if it fails, try again:
+      getImage()
+    })
   }
 
   function getImageFromUrls() {
-    // for web editor...
-    astroImage = loadImage(getSdssUrls()[parseInt(random(0, 765))], (e) => resetTimer(), () => {
+    loadImage(getSdssUrls()[parseInt(random(0, 765))], (e) => {
+      astroImage = e, resetTimer()
+    }, () => {
       // if it fails, try again:
       getImageFromUrls()
     })
