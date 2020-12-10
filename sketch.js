@@ -2,9 +2,6 @@ let astroImage;
 let mode = 0; /* for longer rgb view, mode = -1; */
 const magnitude = 5;
 let alpha = 200;
-let imageObjs = [];
-const collectionRequestLength = 50;
-let hubbleIds = [];
 let timer;
 // adjusts how much background noise to ignore:
 let noiseFilter = 0;
@@ -12,7 +9,8 @@ let noiseFilter = 0;
 presentMode();
 
 function preload() {
-  astroImage = loadImage(`./SDSS_assets/images/img${parseInt(random(0,763))}.jpg`);
+  getImage();
+  // for web editor: getImageFromUrls();
 }
 
 function setup() {
@@ -62,6 +60,10 @@ function presentMode() {
         getImage();
         }
   }, 20000);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowWidth*0.5625)
 }
 
 function resetTimer() {
