@@ -9,6 +9,8 @@ let imageObjs = [];
 const collectionRequestLength = 50;
 let hubbleIds = [];
 let timer;
+// adjusts how much background noise to ignore:
+let noiseFilter = 0;
 
 presentMode();
 
@@ -17,7 +19,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowWidth*0.5625); /*16:9*/
   frameRate(60);
   background(0);
 }
@@ -57,7 +59,7 @@ function keyPressed() {
 
 function windowResized() {
   if (fullscreen) {
-    resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(windowWidth, windowWidth*0.5625);
   } else {
     resizeCanvas(600, 400)
   }

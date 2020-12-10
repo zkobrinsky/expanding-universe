@@ -16,12 +16,12 @@ function drawPixels() {
           
            if (mode == 1) {
              alpha = 200;
-            if (r > b /*&& r > 20*/ ) {
+            if (r > b && r > noiseFilter ) {
               r = r * magnitude;
               b = 0;
             } else {
-            if (r < b /* || r < 20*/) {
-              r = 0;
+            if (r < b || r < noiseFilter) {
+              r = r/2;
               g = 0;
               b = 0;
             }
@@ -30,14 +30,14 @@ function drawPixels() {
         
           if (mode == 2) {
             alpha = 200;
-            if (b > r /* && b > 20*/) {
+            if (b > r && b > noiseFilter) {
               b = b * magnitude;
               r = 0;
             } else {
-            if (b < r /* || b < 20 */) {
+            if (b < r || b < noiseFilter ) {
               r = 0;
               g = 0;
-              b = 0;
+              b = b/2;
             }
           }
           }
