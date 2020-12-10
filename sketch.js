@@ -1,10 +1,7 @@
 let astroImage;
-let randomcheckX;
-let randomcheckY;
-let mode = 0;
+let mode = 0; /* for longer rgb view, mode = -1; */
 const magnitude = 5;
 let alpha = 200;
-let backgroundSwitch = false;
 let imageObjs = [];
 const collectionRequestLength = 50;
 let hubbleIds = [];
@@ -39,40 +36,29 @@ function keyPressed() {
   }
   
   if (key === '1') {
-    backgroundSwitch = true;
     mode = 1;
+    resetTimer()
   }
   if (key === '2') {
-    backgroundSwitch = true;
     mode = 2;
+    resetTimer()
   }
   if (key === '0') {
-    backgroundSwitch = true;
     mode = 0;
+    resetTimer()
   }
   if (key === 'ArrowRight') {
     getImage();
     resetTimer();
-    // mode = 0;
-  }
-}
-
-function windowResized() {
-  if (fullscreen) {
-    resizeCanvas(windowWidth, windowWidth*0.5625);
-  } else {
-    resizeCanvas(600, 400)
+    mode = 0;
   }
 }
 
 function presentMode() {
-//   for longer rgb preview:
-  mode = -1;
   timer = setInterval(function(){
     mode++;
     backgroundSwitch = true;
     if (mode >2) {
-        // getImageFromHubble();
         getImage();
         }
   }, 20000);
@@ -80,6 +66,5 @@ function presentMode() {
 
 function resetTimer() {
   clearInterval(timer);
-  mode = 0;
   presentMode();
 }
