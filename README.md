@@ -1,2 +1,2 @@
 # expanding-universe
-Prove the expanding universe theory with pixel manipulation of celestial images
+This program demonstrates proof of the expanding universe by utilizing Hubble's Law and pixel manipulation.
