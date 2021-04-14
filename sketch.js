@@ -16,9 +16,20 @@ function setup() {
   let canvas = createCanvas(windowWidth, windowWidth * 0.56); /*16:9*/
   frameRate(45);
   background(0);
+  // Setup music
+  chordSetup();
+  // sustone1.start();
+  // sustone2.start();
+  noCursor();
+  console.log(singleNoteRandomizer);
 }
 
 function draw() {
+  if (frameCount % singleNoteRandomizer == 0) {
+    console.log("hit target");
+    // playOneNote();
+    singleNoteRandomizer = int(random(200, 400));
+  }
   if (astroImage.width > 2) {
     astroImage.loadPixels();
     drawPixels();
@@ -55,7 +66,11 @@ function keyPressed() {
 
 function presentMode() {
   timer = setInterval(function () {
+    let state = mode;
     mode++;
+    if (mode != state) {
+      playsound();
+    }
     if (mode > 2) {
       getImage();
       mode = 0;
@@ -75,4 +90,5 @@ function touchStarted() {
 function resetTimer() {
   clearInterval(timer);
   presentMode();
+  playsound();
 }
