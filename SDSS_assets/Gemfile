@@ -1,0 +1,7 @@
+source "https://rubygems.org"
+gem 'pry'
+gem 'open-uri'
+gem 'csv'
+gem "down", "~> 5.0"
+gem 'openssl'
+gem "net-http"

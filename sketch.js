@@ -9,62 +9,67 @@ let noiseFilter = 0;
 presentMode();
 
 function preload() {
-  getImage();
-  // for web editor: 
-  // getImageFromUrls();
+  getImageFromUrls();
 }
 
 function setup() {
-  createCanvas(windowWidth, windowWidth*0.5625); /*16:9*/
-  frameRate(60);
+  let canvas = createCanvas(windowWidth, windowWidth * 0.56); /*16:9*/
+  frameRate(45);
   background(0);
 }
 
 function draw() {
   if (astroImage.width > 2) {
     astroImage.loadPixels();
-    drawPixels()
+    drawPixels();
   }
 }
 
-
 function keyPressed() {
-  if (key === ' ') {
-    fs = fullscreen()
+  if (key === " ") {
+    let fs = fullscreen();
     fullscreen(!fs);
   }
-  
-  if (key === '1') {
+
+  if (key === "1") {
     mode = 1;
-    resetTimer()
-  }
-  if (key === '2') {
-    mode = 2;
-    resetTimer()
-  }
-  if (key === '0') {
-    mode = 0;
-    resetTimer()
-  }
-  if (key === 'ArrowRight') {
-    getImage();
     resetTimer();
+  }
+  if (key === "2") {
+    mode = 2;
+    resetTimer();
+  }
+  if (key === "0") {
+    mode = 0;
+    resetTimer();
+  }
+  if (key === "ArrowRight") {
+    getImageFromUrls();
     mode = 0;
   }
+  //   for saving images
+  // if (key === '+') {
+  //   saveCanvas(canvas, 'expanding_universe', 'jpeg')
+  // }
 }
 
 function presentMode() {
-  timer = setInterval(function(){
+  timer = setInterval(function () {
     mode++;
-    backgroundSwitch = true;
-    if (mode >2) {
-        getImage();
-        }
+    if (mode > 2) {
+      getImageFromUrls();
+      mode = 0;
+    }
   }, 20000);
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowWidth*0.5625)
+  resizeCanvas(windowWidth, windowWidth * 0.56);
+}
+
+function touchStarted() {
+  let fs = fullscreen();
+  fullscreen(!fs);
 }
 
 function resetTimer() {

@@ -1,17 +1,20 @@
 require "open-uri"
-require "csv"
 require "pry"
-require "down"
-
-urls = CSV.read("SDSS_urls.csv")[0]
+# require "down"
 
 
-# urls.each_with_index do |url, index|
-#     open(url) do |image|
-#         Down.download(url, destination: "./images")
-#       end
-# end
+# urls = CSV.read("SDSS_urls.csv")[0]
 
+urls = []
+
+def get_random(min,max)
+  rand * (max - min) + min
+end
+
+700.times do 
+  url = "http://skyserver.sdss.org/dr16/SkyServerWS/ImgCutout/getjpeg?TaskName=Skyserver.Chart.Image&ra=#{get_random(151.02,149.12)}&dec=#{get_random(3.2,1.2)}&scale=#{get_random(0.2,0.3)}&width=1920&height=1080&opt=&query="
+  urls << url
+end
 
 urls.each_with_index do |url, index|
   open(url) do |image|
