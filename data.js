@@ -8,11 +8,13 @@ function getImage() {
         "successfully loaded image: " +
           `./SDSS_assets/images/img${randomizer}.jpg`
       );
-      // debugger;
       resetTimer();
     },
     () => {
       // if it fails, try again:
+      console.log(
+        `Could not locate image ./SDSS_assets/images/img${randomizer}.jpg`
+      );
       getImage();
     }
   );
