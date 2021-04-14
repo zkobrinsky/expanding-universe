@@ -1,6 +1,6 @@
 let astroImage;
 let mode = 0; /* for longer rgb view, mode = -1; */
-const magnitude = 5;
+const magnitude = 6;
 let alpha = 200;
 let timer;
 // adjusts how much background noise to ignore:

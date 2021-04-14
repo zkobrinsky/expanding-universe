@@ -31,14 +31,13 @@ function drawPixels() {
     if (mode == 2) {
       alpha = 200;
       if (b > r && b > noiseFilter) {
-        b = (b * magnitude) / 2;
+        b = b * magnitude;
         r = 0;
+        g = 0;
       } else {
-        if (b < r || b < noiseFilter) {
-          r = 0;
-          g = 0;
-          b = 0;
-        }
+        r = 0;
+        g = 0;
+        b = 0;
       }
     }
 
