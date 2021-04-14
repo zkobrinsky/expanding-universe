@@ -21,13 +21,12 @@ function setup() {
   // sustone1.start();
   // sustone2.start();
   noCursor();
-  console.log(singleNoteRandomizer);
 }
 
 function draw() {
   if (frameCount % singleNoteRandomizer == 0) {
     console.log("hit target");
-    // playOneNote();
+    playOneNote();
     singleNoteRandomizer = int(random(200, 400));
   }
   if (astroImage.width > 2) {

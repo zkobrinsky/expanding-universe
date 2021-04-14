@@ -106,16 +106,7 @@ function playsound() {
 function playOneNote() {
   i = int(random(1, chord1.length - 1));
   chordSetup();
-  //   let singleNote = new p5.Oscillator();
-  //   singleNote.setType("sine");
-  //   singleNote.amp(env);
-  //   singleNotevalue = midiToFreq(floor(random(0, chord1.length)));
-  //   singleNote.freq(singleNotevalue);
-
   singleNote.start();
   singleNote.stop(3.5);
   playEnv();
-  //   tone3.start();
-  //   tone3.stop(3.5);
-  //   playEnv();
 }
