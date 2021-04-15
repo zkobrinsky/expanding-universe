@@ -5,6 +5,12 @@ let sustone2;
 let tone1;
 let tone2;
 let tone3;
+let tone1value;
+let tone2value;
+let tone3value;
+
+let soundObjects = [];
+
 let singleNote;
 
 let attackLevel = 0.3;
@@ -32,6 +38,10 @@ let i3 = 5;
 let singleNoteRandomizer;
 
 function chordSetup() {
+  soundObjects.forEach(obj => {
+    obj.delete;
+    soundObjects.shift();
+  });
   masterVolume(0.2);
   singleNoteRandomizer = int(random(200, 400));
 
@@ -63,24 +73,7 @@ function chordSetup() {
   singleNotevalue = midiToFreq(chord1[i]);
   singleNote.freq(singleNotevalue);
 
-  //super slow tremolo for sustones
-  tremolo = new p5.Oscillator();
-  tremolo.freq(0.15);
-  tremolo.amp(0.2);
-  tremolo.setType("sine");
-  tremolo.start();
-
-  sustone1 = new p5.Oscillator();
-  sustone1.setType("sine");
-  sustone1.amp(tremolo);
-  sustone1value = midiToFreq(chord1[0]);
-  sustone1.freq(sustone1value);
-
-  sustone2 = new p5.Oscillator();
-  sustone2.setType("sine");
-  sustone2.amp(tremolo);
-  sustone2value = midiToFreq(chord1[2]);
-  sustone2.freq(sustone2value);
+  soundObjects.push(env, tone1, tone2, tone3, singleNote);
 }
 
 function playEnv() {
