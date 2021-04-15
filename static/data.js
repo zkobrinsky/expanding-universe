@@ -4,18 +4,18 @@ function getImage() {
     `./static/SDSS_assets/images/img${randomizer}.jpg`,
     e => {
       astroImage = e;
-      console.log(
-        "successfully loaded image: " +
-          `./static/SDSS_assets/images/img${randomizer}.jpg`
-      );
+      // console.log(
+      //   "successfully loaded image: " +
+      //     `./static/SDSS_assets/images/img${randomizer}.jpg`
+      // );
       resetTimer();
       playsound();
     },
     () => {
       // if it fails, try again:
-      console.log(
-        `Could not locate image ./static/SDSS_assets/images/img${randomizer}.jpg`
-      );
+      // console.log(
+      //   `Could not locate image ./static/SDSS_assets/images/img${randomizer}.jpg`
+      // );
       getImage();
     }
   );

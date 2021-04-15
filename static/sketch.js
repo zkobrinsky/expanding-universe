@@ -24,7 +24,7 @@ function setup() {
 
 function draw() {
   if (frameCount % singleNoteRandomizer == 0) {
-    console.log("hit target");
+    // console.log("hit target");
     playOneNote();
     singleNoteRandomizer = int(random(200, 400));
   }
