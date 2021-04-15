@@ -1,0 +1,23 @@
+{
+  "name": "expanding-universe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sketch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zkobrinsky/expanding-universe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zkobrinsky/expanding-universe/issues"
+  },
+  "homepage": "https://github.com/zkobrinsky/expanding-universe#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
