@@ -36,8 +36,6 @@ function chordSetup() {
 }
 
 function playsound() {
-  // console.log(osc);
-  // debugger;
   //reduced length of array to favor bass notes in "i"
   osc.start();
   osc.amp(0.5);
@@ -58,6 +56,7 @@ function playsound() {
 }
 
 function playOneNote() {
+  // console.log("playing");
   osc4.start();
   osc4.amp(0.5);
   osc4.freq(midiToFreq(chord1[int(random(1, chord1.length - 5))]));

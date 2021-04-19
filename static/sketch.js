@@ -20,17 +20,15 @@ function setup() {
   frameRate(45);
   background(0);
   // Setup music
-  // console.log(osc);
-  // debugger;
-  singleNoteRandomizer = int(random(200, 400));
+  singleNoteRandomizer = int(random(300, 600));
   noCursor();
 }
 
 function draw() {
-  // console.log(osc)
   if (frameCount % singleNoteRandomizer == 0) {
+    // console.log("hit target");
     playOneNote();
-    singleNoteRandomizer = int(random(200, 400));
+    singleNoteRandomizer = int(random(300, 600));
   }
   if (astroImage.width > 2) {
     astroImage.loadPixels();
