@@ -6,6 +6,7 @@ let timer;
 // adjusts how much background noise to ignore:
 let noiseFilter = 0;
 let singleNoteRandomizer;
+let lastNoteTime;
 
 presentMode();
 
@@ -20,15 +21,18 @@ function setup() {
   frameRate(45);
   background(0);
   // Setup music
-  singleNoteRandomizer = int(random(300, 600));
+  singleNoteRandomizer = int(random(100, 400));
   noCursor();
 }
 
 function draw() {
-  if (frameCount % singleNoteRandomizer == 0) {
-    // console.log("hit target");
+  if (
+    frameCount % singleNoteRandomizer == 0 &&
+    frameCount - lastNoteTime > 210
+  ) {
+    console.log("hit target");
     playOneNote();
-    singleNoteRandomizer = int(random(300, 600));
+    singleNoteRandomizer = int(random(100, 400));
   }
   if (astroImage.width > 2) {
     astroImage.loadPixels();
