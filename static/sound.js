@@ -18,6 +18,7 @@ let susPercent2 = 0.2;
 let releaseTime2 = 2;
 
 function chordSetup() {
+  masterVolume(0.2);
   env = new p5.Envelope();
   env.setADSR(attackTime, decayTime, susPercent, releaseTime);
   env.setRange(attackLevel, releaseLevel);
@@ -57,7 +58,6 @@ function playsound() {
 }
 
 function playOneNote() {
-  console.log("playing");
   osc4.start();
   osc4.amp(0.5);
   osc4.freq(midiToFreq(chord1[int(random(1, chord1.length - 5))]));
