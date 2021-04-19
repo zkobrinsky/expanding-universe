@@ -1,17 +1,5 @@
+let osc, osc2, osc3, osc4, env, env2;
 let chord1 = [47, 52, 56, 59, 63, 66, 68, 71, 73, 76, 80, 88];
-
-let sustone1;
-let sustone2;
-let tone1;
-let tone2;
-let tone3;
-let tone1value;
-let tone2value;
-let tone3value;
-
-let soundObjects = [];
-
-let singleNote;
 
 let attackLevel = 0.3;
 let releaseLevel = 0;
@@ -29,77 +17,51 @@ let decayTime2 = 3;
 let susPercent2 = 0.2;
 let releaseTime2 = 2;
 
-let tremolo;
-
-let i = 3;
-let i2 = 0;
-let i3 = 5;
-
-let singleNoteRandomizer;
-
 function chordSetup() {
-  soundObjects.forEach(obj => {
-    obj.delete;
-    soundObjects.shift();
-  });
-  masterVolume(0.2);
-  singleNoteRandomizer = int(random(200, 400));
-
   env = new p5.Envelope();
   env.setADSR(attackTime, decayTime, susPercent, releaseTime);
   env.setRange(attackLevel, releaseLevel);
 
-  tone1 = new p5.Oscillator();
-  tone1.setType("sine");
-  tone1.amp(env);
-  tone1value = midiToFreq(chord1[i]);
-  tone1.freq(tone1value);
+  env2 = new p5.Envelope();
+  env2.setADSR(attackTime, decayTime, susPercent, releaseTime);
+  env2.setRange(attackLevel, releaseLevel);
 
-  tone2 = new p5.Oscillator();
-  tone2.setType("sine");
-  tone2.amp(env);
-  tone2value = midiToFreq(chord1[i2]);
-  tone2.freq(tone2value);
-
-  tone3 = new p5.Oscillator();
-  tone3.setType("sine");
-  tone3.amp(env);
-  tone3value = midiToFreq(chord1[i3]);
-  tone3.freq(tone3value);
-
-  singleNote = new p5.Oscillator();
-  singleNote.setType("sine");
-  singleNote.amp(env);
-  singleNotevalue = midiToFreq(chord1[i]);
-  singleNote.freq(singleNotevalue);
-
-  soundObjects.push(env, tone1, tone2, tone3, singleNote);
-}
-
-function playEnv() {
-  env.play();
+  osc = new p5.Oscillator("sine");
+  osc2 = new p5.Oscillator("sine");
+  osc3 = new p5.Oscillator("sine");
+  osc4 = new p5.Oscillator("sine");
+  // console.log(osc);
+  // debugger;
 }
 
 function playsound() {
+  // console.log(osc);
+  // debugger;
   //reduced length of array to favor bass notes in "i"
-  i = int(random(1, chord1.length - 5));
-  i2 = int(random(1, chord1.length - 3));
-  i3 = int(random(1, chord1.length - 1));
-  chordSetup();
-
-  tone1.start();
-  tone2.start();
-  tone3.start();
-  tone1.stop(3.5);
-  tone2.stop(3.5);
-  tone3.stop(3.5);
-  playEnv();
+  osc.start();
+  osc.amp(0.5);
+  osc.freq(midiToFreq(chord1[int(random(1, chord1.length - 5))]));
+  osc.amp(env);
+  osc.stop(3.5);
+  osc2.start();
+  osc2.amp(0.5);
+  osc2.freq(midiToFreq(chord1[int(random(1, chord1.length - 3))]));
+  osc2.amp(env);
+  osc.stop(3.5);
+  osc3.start();
+  osc3.amp(0.5);
+  osc3.freq(midiToFreq(chord1[int(random(1, chord1.length - 1))]));
+  osc3.amp(env);
+  osc.stop(3.5);
+  env.play();
 }
 
 function playOneNote() {
-  i = int(random(1, chord1.length - 1));
-  chordSetup();
-  singleNote.start();
-  singleNote.stop(3.5);
-  playEnv();
+  console.log("playing");
+  osc4.start();
+  osc4.amp(0.5);
+  osc4.freq(midiToFreq(chord1[int(random(1, chord1.length - 5))]));
+  osc4.amp(env2);
+  osc4.stop(3.5);
+  env2.play();
 }

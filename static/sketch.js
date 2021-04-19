@@ -5,10 +5,12 @@ let alpha = 200;
 let timer;
 // adjusts how much background noise to ignore:
 let noiseFilter = 0;
+let singleNoteRandomizer;
 
 presentMode();
 
 function preload() {
+  chordSetup();
   getImage();
 }
 
@@ -18,13 +20,15 @@ function setup() {
   frameRate(45);
   background(0);
   // Setup music
-  chordSetup();
+  // console.log(osc);
+  // debugger;
+  singleNoteRandomizer = int(random(200, 400));
   noCursor();
 }
 
 function draw() {
+  // console.log(osc)
   if (frameCount % singleNoteRandomizer == 0) {
-    // console.log("hit target");
     playOneNote();
     singleNoteRandomizer = int(random(200, 400));
   }
