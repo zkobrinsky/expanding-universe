@@ -9,7 +9,7 @@ let noiseFilter = 0;
 presentMode();
 
 function preload() {
-  getImage();
+  getImageFromUrls();
 }
 
 function setup() {
@@ -53,7 +53,7 @@ function keyPressed() {
     resetTimer();
   }
   if (key === "ArrowRight") {
-    getImage();
+    getImageFromUrls();
     mode = 0;
   }
   //   for saving images
