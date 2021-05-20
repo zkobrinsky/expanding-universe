@@ -7,6 +7,7 @@ let timer;
 let noiseFilter = 0;
 let singleNoteRandomizer;
 let lastNoteTime;
+let osc4Playing;
 
 presentMode();
 
@@ -21,18 +22,14 @@ function setup() {
   frameRate(45);
   background(0);
   // Setup music
-  singleNoteRandomizer = int(random(100, 400));
+  singleNoteRandomizer = int(random(100, 200));
   noCursor();
 }
 
 function draw() {
-  if (
-    frameCount % singleNoteRandomizer == 0 &&
-    frameCount - lastNoteTime > 210
-  ) {
-    console.log("hit target");
+  if (frameCount % singleNoteRandomizer == 0 && !osc4Playing) {
     playOneNote();
-    singleNoteRandomizer = int(random(100, 400));
+    singleNoteRandomizer = int(random(100, 200));
   }
   if (astroImage.width > 2) {
     astroImage.loadPixels();
@@ -72,7 +69,7 @@ function presentMode() {
   timer = setInterval(function () {
     let state = mode;
     mode++;
-    if (mode != state) {
+    if (mode != state && mode != 0) {
       playsound();
     }
     if (mode > 2) {

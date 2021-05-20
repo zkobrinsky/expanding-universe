@@ -31,8 +31,6 @@ function chordSetup() {
   osc2 = new p5.Oscillator("sine");
   osc3 = new p5.Oscillator("sine");
   osc4 = new p5.Oscillator("sine");
-  // console.log(osc);
-  // debugger;
 }
 
 function playsound() {
@@ -59,6 +57,10 @@ function playsound() {
 function playOneNote() {
   // console.log("playing");
   lastNoteTime = frameCount;
+  osc4Playing = true;
+  setTimeout(() => {
+    osc4Playing = false;
+  }, 3500);
   osc4.start();
   osc4.amp(0.5);
   osc4.freq(midiToFreq(chord1[int(random(1, chord1.length - 5))]));
