@@ -13,4 +13,4 @@ app.get("/", function (req, res) {
 
 app.listen(8000);
 
-opn(url);
+// opn(url);

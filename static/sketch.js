@@ -69,14 +69,14 @@ function presentMode() {
   timer = setInterval(function () {
     let state = mode;
     mode++;
-    if (mode != state && mode != 0) {
+    if (mode != state && mode != 3) {
       playsound();
     }
     if (mode > 2) {
       getImage();
       mode = 0;
     }
-  }, 20000);
+  }, 3600);
 }
 
 function windowResized() {
@@ -91,5 +91,5 @@ function touchStarted() {
 function resetTimer() {
   clearInterval(timer);
   presentMode();
-  playsound();
+  // playsound();
 }
