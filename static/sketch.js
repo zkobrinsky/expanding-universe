@@ -76,7 +76,7 @@ function presentMode() {
       getImage();
       mode = 0;
     }
-  }, 3600);
+  }, 20000);
 }
 
 function windowResized() {
