@@ -22,14 +22,14 @@ function setup() {
   frameRate(45);
   background(0);
   // Setup music
-  singleNoteRandomizer = int(random(100, 200));
+  singleNoteRandomizer = int(random(100, 400));
   noCursor();
 }
 
 function draw() {
   if (frameCount % singleNoteRandomizer == 0 && !osc4Playing) {
     playOneNote();
-    singleNoteRandomizer = int(random(100, 200));
+    singleNoteRandomizer = int(random(100, 400));
   }
   if (astroImage.width > 2) {
     astroImage.loadPixels();
