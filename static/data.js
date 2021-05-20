@@ -9,7 +9,7 @@ function getImage() {
       //     `./static/SDSS_assets/images/img${randomizer}.jpg`
       // );
       resetTimer();
-      playsound();
+      // playsound();
     },
     () => {
       // if it fails, try again:
