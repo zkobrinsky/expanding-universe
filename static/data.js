@@ -4,10 +4,6 @@ function getImage() {
     `./static/SDSS_assets/images/img${randomizer}.jpg`,
     e => {
       astroImage = e;
-      // console.log(
-      //   "successfully loaded image: " +
-      //     `./static/SDSS_assets/images/img${randomizer}.jpg`
-      // );
       resetTimer();
       playsound();
     },
